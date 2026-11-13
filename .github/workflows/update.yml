@@ -6,7 +6,10 @@ name: Update and publish
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes (UTC; GitHub may run it a few minutes late)
+    # Every 30 minutes, at :07 and :37 past the hour. GitHub's scheduler is
+    # "best effort": runs can be late or dropped, especially on the busy
+    # :00 and :30 marks, so we avoid those.
+    - cron: "7,37 * * * *"
   push:
     branches: [main]
   workflow_dispatch:
