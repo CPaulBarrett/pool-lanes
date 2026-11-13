@@ -133,13 +133,25 @@ async function load() {
     drawGrid();
     drawUpdated();
   } catch (error) {
+    console.error(error);
+    if (data) return;  // keep showing what we already have
     document.getElementById("grid").replaceChildren(
       el("p", "message", "Couldn't load the timetable. Try again in a minute.")
     );
-    console.error(error);
   }
 }
 
 load();
 // Refresh the "past/now" shading and the "min ago" text every minute.
 setInterval(() => { if (data) { drawGrid(); drawUpdated(); } }, 60000);
+
+// When the app comes back to the foreground (e.g. reopened from the home
+// screen), fetch fresh data rather than showing what was loaded hours ago.
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") load();
+});
+
+// Register the service worker (sw.js), which lets the app open offline.
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(error => console.error("Service worker:", error));
+}

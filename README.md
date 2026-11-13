@@ -21,6 +21,15 @@ PerfectGym booking system ──► scripts/fetch.py ──► site/data.json �
    - `index.html`: the structure
    - `style.css`: colours and layout (including dark mode)
    - `app.js`: reads `data.json` and draws the grid
+   - `manifest.webmanifest` + `icons/`: let phones install it as an app
+     (icons are drawn by `scripts/make_icons.py`)
+   - `sw.js`: service worker that keeps a copy so the app opens offline
+
+## Install on a phone
+
+- **Android (Chrome):** open the site, then menu (⋮) → **Install app** (or
+  **Add to Home screen**).
+- **iPhone (Safari):** Share → **Add to Home Screen**.
 
 ## Run it on your own computer
 
