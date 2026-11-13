@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GESAC Lanes</title>
+  <meta name="description" content="Free lap lanes at GESAC's 50m and 25m pools for the next five days.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>GESAC free lanes</h1>
+    <!-- Buttons are created by app.js from the pools in data.json -->
+    <nav id="pool-picker" aria-label="Choose pool"></nav>
+  </header>
+
+  <main>
+    <ul class="legend" aria-label="Colour key">
+      <li><span class="swatch l0"></span>0</li>
+      <li><span class="swatch l1"></span>1–2</li>
+      <li><span class="swatch l3"></span>3–4</li>
+      <li><span class="swatch l5"></span>5–6</li>
+      <li><span class="swatch l7"></span>7+</li>
+      <li><span class="swatch closed"></span>no public lanes</li>
+    </ul>
+
+    <div id="grid" class="grid" role="table" aria-live="polite">
+      <p class="message">Loading…</p>
+    </div>
+  </main>
+
+  <footer>
+    <p id="updated"></p>
+    <p>Numbers are lanes free for public lap swimming, per half hour.
+       Data from <a href="https://www.geleisure.com.au/swim/pool-availability">Glen Eira Leisure</a>
+       — always subject to change.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
